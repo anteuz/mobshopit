@@ -1,0 +1,72 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Shopping List</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form #f="ngForm" (ngSubmit)="onAddItem(f)">
+    <ion-list>
+      <ion-item>
+        <ion-label fixed>Name</ion-label>
+        <ion-input
+          type="text"
+          name="ingredientName"
+          placeholder="Rock salt"
+          ngModel
+          required
+        >
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>Amount</ion-label>
+        <ion-input
+          type="number"
+          name="ingredientAmount"
+          placeholder="1"
+          ngModel
+          required
+        >
+        </ion-input>
+      </ion-item>
+    </ion-list>
+    <button
+      ion-button
+      block
+      type="submit"
+      [disabled]="!f.valid"
+      >
+      Add Item
+    </button>
+  </form>
+  <!-- Displayed List -->
+  <ion-list>
+    <ion-item-sliding  *ngFor="let ingredient of ingredients; let i = index">
+      <ion-item>
+        <h3>{{ ingredient.name }}</h3>
+        <p>{{ ingredient.amount }}</p>
+      </ion-item>
+      <ion-item-options side="right">
+        <button
+            ion-button
+            color="primary"
+            (click)="onEdit(ingredient)"
+        >
+          <ion-icon name="create"></ion-icon>
+          Edit
+        </button>
+        <button
+          ion-button
+          color="secondary"
+          (click)="onRemoveItem(ingredient)"
+        >
+          <ion-icon name="trash"></ion-icon>
+          Delete
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
