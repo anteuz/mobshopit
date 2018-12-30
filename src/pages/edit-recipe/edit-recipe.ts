@@ -51,7 +51,7 @@ export class EditRecipePage implements OnInit{
       });
     }
 
-    const recipe = new Recipe(value.title, value.description, value.difficulty, ingredients)
+    const recipe = new Recipe(value.title, value.description, value.difficulty, ingredients);
 
     if (this.mode == 'Edit') {
       this.recipeServices.updateRecipe(this.recipeIndex, recipe);

@@ -12,6 +12,13 @@ import {RecipePage}          from '../pages/recipe/recipe';
 import {EditRecipePage}      from '../pages/edit-recipe/edit-recipe';
 import {ShoppingListService} from '../services/shopping-list';
 import {RecipeService}       from '../services/recipes';
+import {SigninPage}          from '../pages/signin/signin';
+import {SignupPage}          from '../pages/signup/signup';
+import {AuthService}         from '../services/auth';
+import {SLOptionsPage}       from '../pages/shopping-list/sl-options/sl-options';
+import {HttpClientModule}    from '@angular/common/http';
+import {RecipesOptionsPage}  from '../pages/recipes/recipes-options/recipes-options';
+import {IonicStorageModule}  from '@ionic/storage';
 
 @NgModule({
   declarations: [
@@ -20,11 +27,17 @@ import {RecipeService}       from '../services/recipes';
     RecipePage,
     RecipesPage,
     ShoppingListPage,
-    TabsPage
+    TabsPage,
+    SigninPage,
+    SignupPage,
+    SLOptionsPage,
+    RecipesOptionsPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    HttpClientModule,
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -33,13 +46,18 @@ import {RecipeService}       from '../services/recipes';
     RecipePage,
     RecipesPage,
     ShoppingListPage,
-    TabsPage
+    TabsPage,
+    SigninPage,
+    SignupPage,
+    SLOptionsPage,
+    RecipesOptionsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     ShoppingListService,
     RecipeService,
+    AuthService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
